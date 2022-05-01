@@ -1083,7 +1083,7 @@ header .header-bar .nav-bar .navbar li a i {
   font-size: 20px;
 }
 
-.our-slills .our-skill .skills .skilbord span {
+.our-slills .our-skill .skills .skilbord .span {
   font-weight: 400;
   font-size: 14px;
   color: var(--main-color);
@@ -1099,12 +1099,16 @@ header .header-bar .nav-bar .navbar li a i {
   position: relative;
 }
 
-.our-slills .our-skill .skills .skilbord .bord::before {
+.our-slills .our-skill .skills .skilbord .bord span {
   content: "";
-  width: var(--width) ;
   height: 100%;
   background: var(--main-color);
   position: absolute;
+  transition: 1.5s;
+  -webkit-transition: 1.5s;
+  -moz-transition: 1.5s;
+  -ms-transition: 1.5s;
+  -o-transition: 1.5s;
 }
 
 .how-it-works {
