@@ -9,6 +9,7 @@ let days = document.querySelector(".days");
 let hours = document.querySelector(".hours");
 let minutes = document.querySelector(".minutes");
 let seconds = document.querySelector(".secounds");
+let countDownEnd = new Date("Oct 11, 2022 00:00:00").getTime();
 
 
 function ourawesome (el) {
@@ -34,38 +35,22 @@ window.onscroll = function () {
   }
 };
 
-function latestecents (day , hou , min , sec) {
-  setInterval(() => {
-    if (sec.textContent > 0) {
-      sec.textContent--;
-    } else {
-      sec.textContent = 60;
-    };
-  }, 1000);
-
-  setInterval(() => {
-    if (min.textContent > 0) {
-      min.textContent--;
-    } else {
-      min.textContent = 60;
-    };
-  }, 1000 * 60);
-
-  setInterval(() => {
-    if (hou.textContent > 0) {
-      hou.textContent--;
-    } else {
-      hou.textContent = 24;
-    };
-  }, (1000 * 60) * 60);
-
-  setInterval(() => {
-    if (day.textContent > 0) {
-      day.textContent--;
-    } else {
-      day.textContent = 365;
-    };
-  }, ((1000 * 60) * 60) * 24);
-};
-
-latestecents(days , hours , minutes , seconds);
+let countDown = setInterval(() => {
+  // time now
+  let dateNow= new Date().getTime();
+  // the remaining time
+  let dateRema = countDownEnd - dateNow ;
+  // stop count down
+  if (dateRema <= 0) {
+    clearInterval(countDown);
+  }
+  // time units
+  let day = Math.floor(dateRema / (1000 * 60 * 60 * 24));
+  let hou = Math.floor(dateRema % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
+  let min = Math.floor(dateRema % (1000 * 60 * 60) / (1000 * 60));
+  let sec = Math.floor(dateRema % (1000 * 60) / (1000));
+  days.textContent = day < 100 ? `0${day}`: day < 10 ? `00${day}` : day;
+  hours.textContent = hou < 10 ? `0${hou}`: hou;
+  minutes.textContent = min < 10 ? `0${min}`: min;
+  seconds.textContent =  sec < 10 ? `0${sec}`: sec;
+}, 1000);

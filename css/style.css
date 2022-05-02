@@ -1045,6 +1045,11 @@ header .header-bar .nav-bar .navbar li a i {
   top: 0;
   display: flex;
   align-items: center;
+  transform: skewX(1deg);
+  -webkit-transform: skewX(1deg);
+  -moz-transform: skewX(1deg);
+  -ms-transform: skewX(1deg);
+  -o-transform: skewX(1deg);
 }
 
 .services .service .box .info::after {
